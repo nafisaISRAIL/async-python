@@ -9,7 +9,7 @@ def _clean_word(word):
     return word
 
 
-def split_by_words(morph, text):
+async def split_by_words(morph, text):
     """Учитывает знаки пунктуации, регистр и словоформы, выкидывает предлоги."""
     words = []
     for word in text.split():
@@ -38,7 +38,6 @@ def calculate_jaundice_rate(article_words, charged_words):
 
     found_charged_words = [word for word in article_words if word in set(charged_words)]
     score = len(found_charged_words) / len(article_words) * 100
-
     return round(score, 2)
 
 

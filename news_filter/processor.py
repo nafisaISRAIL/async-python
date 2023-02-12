@@ -69,7 +69,7 @@ async def process_article(session, morph, charged_words, url, result):
         try:
             async with timeit():
                 async with timeout(5):
-                    article_words = split_by_words(morph, cleaned_body)
+                    article_words = await split_by_words(morph, cleaned_body)
                 score = calculate_jaundice_rate(article_words, charged_words)
                 words_count = len(article_words)
         except asyncio.TimeoutError:
@@ -77,12 +77,12 @@ async def process_article(session, morph, charged_words, url, result):
     result.append({"url": url,"score": score, "words_count": words_count, "status": status.value})
 
 
-async def articles_processor(urls):
+async def analyze_articles(urls):
     result = []
     async with aiohttp.ClientSession() as session:
         morph = pymorphy2.MorphAnalyzer()
         negative_charge_words, _ = get_charge_words_from_file()
         async with create_task_group() as tg:
-            for article_url in urls:
-                tg.start_soon(process_article, session, morph, negative_charge_words, article_url, result)
+            for url in urls:
+                tg.start_soon(process_article, session, morph, negative_charge_words, url, result)
     return result
