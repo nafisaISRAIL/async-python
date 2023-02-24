@@ -3,7 +3,7 @@ import aiohttp
 import time
 import pymorphy2
 import aiofiles
-from anyio import sleep, create_task_group, run
+from anyio import create_task_group
 import asyncio
 from async_timeout import timeout
 from adapters import SANITIZERS, ArticleNotFound

@@ -7,7 +7,10 @@ from processor import analize_articles
 async def handle(request):
     urls = request.rel_url.query.get("urls")
     if not urls:
-        return web.json_response({})
+        return web.json_response({
+            "message": "At least one url must be specified in the `urls` query parameter",
+            "code": 400
+            })
     urls = urls.split(",")
     if len(urls) > 10:
         return web.json_response(

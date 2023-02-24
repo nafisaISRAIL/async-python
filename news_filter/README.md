@@ -17,6 +17,15 @@ pip install -r requirements.txt
 python server.py
 ```
 
+# How to use
+
+In your browser open the new tab and type 
+```
+http://localhost:8080/?urls=https://inosmi.ru/economic/20190629/245384784.html,https://inosmi.ru/economic/20190629/245384784.html
+```
+Currently the program works with articles taken from https://inosmi.ru site.
+If not any url was provided the error will be displayed on the screen.
+
 # How to run tests
 
 For testing [pytest](https://docs.pytest.org/en/latest/) is used, the tests cover code fragments difficult to debug: text_tools.py, adapters and processor. Commands to run tests:
