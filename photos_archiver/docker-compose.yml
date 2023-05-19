@@ -1,0 +1,14 @@
+version: '3.2'
+services:
+  aiows-server:
+    build: .
+    volumes:
+      - .:/src
+      - ${PHOTOS_DIR}:/src/photos
+    working_dir: /src
+    command: python server.py
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+
