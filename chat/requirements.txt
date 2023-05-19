@@ -1,0 +1,5 @@
+aiofiles==0.8.0
+anyio==3.5.0
+async-timeout==4.0.2
+tk==0.1.0
+python-dotenv==0.21.0
