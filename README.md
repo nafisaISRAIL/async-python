@@ -1,1 +1,1 @@
-# dvmn-async-python
+# async python projects
